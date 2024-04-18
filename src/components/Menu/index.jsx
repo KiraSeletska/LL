@@ -1,5 +1,4 @@
 import styles from "./menu.module.scss";
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
@@ -23,11 +22,11 @@ export const Menu = () => {
           </NavLink>
           <NavLink to="/All">
             {" "}
-            <li>All</li>{" "}
+            <li>All in progress</li>{" "}
           </NavLink>
           <NavLink to="/Know">
             {" "}
-            <li>Know</li>{" "}
+            <li>Already know</li>{" "}
           </NavLink>
           <NavLink to="/AddToDictionary">
             {" "}

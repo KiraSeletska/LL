@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Education } from './Pages/Education';
-import { AddToDictionary, AddToDictionaryForm } from './Pages/AddToDictionary';
+import { AddToDictionaryForm } from './Pages/AddToDictionary';
 import { Know } from './Pages/Know';
 import { All } from './Pages/All';
 const router = createBrowserRouter([

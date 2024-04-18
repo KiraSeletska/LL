@@ -1,7 +1,7 @@
-import { write, read} from '../utils/ls'
+import { read } from '../utils/ls'
 
 export const initialState = read('initialState', {
-  topics: ["Nouns", "Verbs", "Adjectives", "Sentences", "IT"],
+  topics: ["Nouns", "Verbs", "Adjectives"],
   statuses: ["yes", "win"],
   dictionary: [],
 })

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./card.module.scss";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { changeStatus, deleteWord } from "../../redux/dictionarySlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-regular-svg-icons";

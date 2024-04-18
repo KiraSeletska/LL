@@ -1,23 +1,31 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./addToDictionary.module.scss";
 import { addToDictionary } from "../../redux/dictionarySlice";
 import { getRandomID } from "../../utils/randomId";
+
 export const AddToDictionaryForm = () => {
   const topics = useSelector((state) => state.dictionary.topics);
 
   const [myLang, setMylang] = useState("");
   const [newLang, setNewlang] = useState("");
   const [topic, setTopic] = useState("");
+  const [selectedTopic, setSelectedTopic] = useState("");
 
   const dispatch = useDispatch();
+  const currentTime = new Date();
+  const day = currentTime.getDate();
+  const month = currentTime.getMonth() + 1; // Месяцы в JavaScript нумеруются с 0, поэтому добавляем 1
+  const year = currentTime.getFullYear();
+  // Сформировать строку с датой в нужном формате (например, "dd.mm.yyyy")
+  const formattedDate = `${day}.${month}.${year}`;
 
   const addNewWord = () => {
     const newWord = {
       id: getRandomID(),
       baseLanguage: myLang,
       newLanguage: newLang,
-      addingTime: "",
+      addingTime: formattedDate,
       topic: topic,
       status: false,
     };
@@ -25,6 +33,7 @@ export const AddToDictionaryForm = () => {
     setMylang("");
     setNewlang("");
     setTopic("");
+    setSelectedTopic(""); 
   };
 
   return (
@@ -55,7 +64,11 @@ export const AddToDictionaryForm = () => {
                   type="radio"
                   value={el}
                   name="check"
-                  onChange={(e) => setTopic(e.target.value)}
+                  checked={selectedTopic === el} 
+                  onChange={(e) => {
+                    setTopic(e.target.value);
+                    setSelectedTopic(e.target.value); 
+                  }}
                 ></input>
               </p>
             ))}

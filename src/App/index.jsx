@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { Achievements } from "../components/Achievements";
-import { Card } from "../components/Card";
 import { Menu } from "../components/Menu";
 import styles from './App.module.scss';
 
