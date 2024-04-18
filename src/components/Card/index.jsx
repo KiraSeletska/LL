@@ -54,7 +54,7 @@ export const Card = (props) => {
         className={styles.knowBtn}
         onClick={() => handleStatusChange(props.props.id)}
       >
-        {props.props.status ? (
+        {!props.props.status ? (
           <FontAwesomeIcon icon={faCheck} />
         ) : (
           <FontAwesomeIcon icon={faQuestion} />
