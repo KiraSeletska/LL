@@ -1,0 +1,50 @@
+.wrapper {
+  width: 60%;
+  margin: auto;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 2px 5px #666;
+  padding: 25px;
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    & .inputs {
+      display: grid;
+      grid-template-columns: 3fr 3fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+      font-size: 20px;
+      & input {
+        height: 40px;
+        border: none;
+        &::placeholder {
+          color: rgb(127, 127, 127);
+          font-size: 15px;
+          padding: 10px;
+          font-weight: 500;
+        }
+        &::-webkit-input-placeholder {
+          opacity: 1;
+          transition: opacity 0.3s ease;
+        }
+        &:focus::-webkit-input-placeholder {
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+      }
+    }
+
+    & button {
+    }
+    & .checkboxContainer {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      & p {
+        & .checkbox {
+        }
+      }
+    }
+  }
+}
