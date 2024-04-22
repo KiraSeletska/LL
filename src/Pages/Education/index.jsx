@@ -7,26 +7,28 @@ import { faForward } from "@fortawesome/free-solid-svg-icons";
 import styles from "./education.module.scss";
 
 export const Education = () => {
+
   const { id } = useParams();
+
   const [filteredData, setFilteredData] = useState([]);
+  const [currentInd, setCurrentInd] = useState(0);
+
   const data = useSelector((state) => state.dictionary.dictionary);
 
-  useEffect(() => {
-    const filtered = data.filter((item) => item.topic === id);
+ useEffect(() => {
+    const filtered = data.filter((item) => item.topic === id & !item.status);
     setFilteredData(filtered);
+    setCurrentInd(getRandomDictionaryEntry(filtered));
   }, [data, id]);
 
   const getRandomDictionaryEntry = (dictionary) => {
     const randomIndex = Math.floor(Math.random() * dictionary.length);
     return randomIndex;
   };
-  
-  const [currentInd, setCurrentInd] = useState(getRandomDictionaryEntry(filteredData));
 
   const nextWord = () => {
     const nextIndex = (currentInd + 1) % filteredData.length;
     setCurrentInd(nextIndex);
-    console.log(filteredData[currentInd]);
   };
 
   return (

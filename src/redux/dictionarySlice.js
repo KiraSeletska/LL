@@ -1,16 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { initialState } from "./state";
 import { write } from "../utils/ls";
+import { getCurrentDateFormatted } from "../utils/date";
 
 export const dictionarySlice = createSlice({
   name: "dictionary",
   initialState,
   reducers: {
     addToDictionary: (state, action) => {
-      const { baseLanguage, newLanguage, topic } = action.payload;
-      if (!baseLanguage || !newLanguage || !topic) {
-        return;
-      }
       state.dictionary = state.dictionary = [
         ...state.dictionary,
         action.payload,
@@ -22,13 +19,21 @@ export const dictionarySlice = createSlice({
       state.dictionary = [
         ...state.dictionary.map((el) =>
           el.id === action.payload
-            ? { ...el, status: (el.status = !el.status) }
+            ? { ...el, status: (el.status = !el.status),
+              memorizationTime: el.status ? getCurrentDateFormatted() : '',
+            }
             : el
         ),
       ];
-      console.log('im in changeStatus')
       write("initialState", state);
     },
+    /*
+    {
+          ...el,
+          status: !el.status,
+          memorizationTime: el.memorizationTime === '' ? getCurrentDateFormatted() : '',
+        }
+    */
     deleteWord: (state, action) => {
         console.log('im in delet')
         state.dictionary = [

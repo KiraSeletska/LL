@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./addToDictionary.module.scss";
 import { addToDictionary } from "../../redux/dictionarySlice";
 import { getRandomID } from "../../utils/randomId";
+import { getCurrentDateFormatted } from "../../utils/date";
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AddToDictionaryForm = () => {
   const topics = useSelector((state) => state.dictionary.topics);
@@ -13,27 +17,27 @@ export const AddToDictionaryForm = () => {
   const [selectedTopic, setSelectedTopic] = useState("");
 
   const dispatch = useDispatch();
-  const currentTime = new Date();
-  const day = currentTime.getDate();
-  const month = currentTime.getMonth() + 1; // Месяцы в JavaScript нумеруются с 0, поэтому добавляем 1
-  const year = currentTime.getFullYear();
-  // Сформировать строку с датой в нужном формате (например, "dd.mm.yyyy")
-  const formattedDate = `${day}.${month}.${year}`;
 
   const addNewWord = () => {
+    if (!myLang || !newLang || !topic) {
+     toast.error('Please fill out all fields: your language, new language and select the topic');
+      return;
+    }
     const newWord = {
       id: getRandomID(),
       baseLanguage: myLang,
       newLanguage: newLang,
-      addingTime: formattedDate,
+      addingTime: getCurrentDateFormatted(),
+      memorizationTime: "",
       topic: topic,
       status: false,
     };
     dispatch(addToDictionary(newWord));
+    toast.success('Word added successfully to ' + topic);
     setMylang("");
     setNewlang("");
     setTopic("");
-    setSelectedTopic(""); 
+    setSelectedTopic("");
   };
 
   return (
@@ -53,6 +57,7 @@ export const AddToDictionaryForm = () => {
             onChange={(e) => setNewlang(e.target.value)}
           />
           <button onClick={addNewWord}>Add new word</button>
+          <ToastContainer />
         </div>
         <div className={styles.checkboxContainer}>
           {topics &&
@@ -64,10 +69,10 @@ export const AddToDictionaryForm = () => {
                   type="radio"
                   value={el}
                   name="check"
-                  checked={selectedTopic === el} 
+                  checked={selectedTopic === el}
                   onChange={(e) => {
                     setTopic(e.target.value);
-                    setSelectedTopic(e.target.value); 
+                    setSelectedTopic(e.target.value);
                   }}
                 ></input>
               </p>
