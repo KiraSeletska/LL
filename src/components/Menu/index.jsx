@@ -1,8 +1,6 @@
 import styles from "./menu.module.scss";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSquarePlus } from "@fortawesome/free-regular-svg-icons";
 import { AddBtn } from "../AddBtn";
 
 export const Menu = () => {
@@ -22,19 +20,11 @@ export const Menu = () => {
           {" "}
           <li>Recent</li>{" "}
         </NavLink>*/}
-        <NavLink to="/All">
-          {" "}
-          <li>All in progress</li>{" "}
-        </NavLink>
-        <NavLink to="/Know">
-          {" "}
-          <li>Already know</li>{" "}
-        </NavLink>
+        <NavLink to="/All"><li>All in progress</li></NavLink>
+        <NavLink to="/Know"><li>Already know</li></NavLink>
       </ul>
 
-      <NavLink to="/AddToDictionary">
-        <AddBtn />
-      </NavLink>
+      <NavLink to="/AddToDictionary"><AddBtn /></NavLink>
     </div>
   );
 };
