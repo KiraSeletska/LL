@@ -7,8 +7,8 @@ import { store } from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Education } from './Pages/Education';
 import { AddToDictionaryForm } from './Pages/AddToDictionary';
-import { Know } from './Pages/Know';
 import { All } from './Pages/All';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -20,10 +20,9 @@ const router = createBrowserRouter([
         element: <Education/>,
 
       },
-     
       {
-        path: '/Recent',
-        element: <Education/>
+        path: '/All/:id',
+        element: <All/>
 
       },
       {
@@ -31,18 +30,6 @@ const router = createBrowserRouter([
         element: <AddToDictionaryForm />
 
       },
-      {
-        path: '/All',
-        element: <All/>
-
-      },
-      {
-        path: '/Know',
-        element: <Know/>
-
-      }
-
-
     ],
   },
 ]);
