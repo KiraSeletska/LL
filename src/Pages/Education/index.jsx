@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faForward } from "@fortawesome/free-solid-svg-icons";
 import styles from "./education.module.scss";
+import { NavLink } from "react-router-dom";
+import { AddBtn } from "../../components/AddBtn";
 
 export const Education = () => {
 
@@ -41,13 +43,22 @@ export const Education = () => {
 
       <div className={styles.cardWrapper}>
         {filteredData.length > 0 && filteredData[currentInd] ? (
-          <Card key={filteredData[currentInd].id} props={filteredData[currentInd]} />
-        ) : (
-          "Oops, your list is empty"
-        )}
-        <button className={styles.nextBtn} onClick={() => nextWord()}>
+        <>
+         <Card key={filteredData[currentInd].id} props={filteredData[currentInd]} />
+          <button className={styles.nextBtn} onClick={() => nextWord()}>
           <FontAwesomeIcon icon={faForward} />
         </button>
+        </> 
+        ) : (
+          <div className={styles.emptyList}>
+            <p>   Oops, your list is empty. Add a new word?  </p>
+       
+          <NavLink to="/AddToDictionary">
+          <AddBtn />
+        </NavLink>
+          </div>
+        )}
+       
       </div>
     </div>
   );

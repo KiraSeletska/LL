@@ -5,8 +5,8 @@ import { addToDictionary } from "../../redux/dictionarySlice";
 import { getRandomID } from "../../utils/randomId";
 import { getCurrentDateFormatted } from "../../utils/date";
 import { toast } from 'react-toastify';
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AddBtn } from "../../components/AddBtn";
 
 export const AddToDictionaryForm = () => {
   const topics = useSelector((state) => state.dictionary.topics);
@@ -14,7 +14,6 @@ export const AddToDictionaryForm = () => {
   const [myLang, setMylang] = useState("");
   const [newLang, setNewlang] = useState("");
   const [topic, setTopic] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState("");
 
   const dispatch = useDispatch();
 
@@ -37,7 +36,6 @@ export const AddToDictionaryForm = () => {
     setMylang("");
     setNewlang("");
     setTopic("");
-    setSelectedTopic("");
   };
 
   return (
@@ -56,8 +54,8 @@ export const AddToDictionaryForm = () => {
             value={newLang}
             onChange={(e) => setNewlang(e.target.value)}
           />
-          <button onClick={addNewWord}>Add new word</button>
-          <ToastContainer />
+          <AddBtn onClick={addNewWord} />
+        
         </div>
         <div className={styles.checkboxContainer}>
           {topics &&
@@ -69,10 +67,9 @@ export const AddToDictionaryForm = () => {
                   type="radio"
                   value={el}
                   name="check"
-                  checked={selectedTopic === el}
+                  checked={topic === el}
                   onChange={(e) => {
                     setTopic(e.target.value);
-                    setSelectedTopic(e.target.value);
                   }}
                 ></input>
               </p>

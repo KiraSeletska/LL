@@ -2,6 +2,6 @@ import { read } from '../utils/ls'
 
 export const initialState = read('initialState', {
   topics: ["Nouns", "Verbs", "Adjectives"],
-  statuses: ["yes", "win"],
+ // statuses: ["yes", "win"],
   dictionary: [],
 })

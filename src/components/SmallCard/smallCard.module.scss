@@ -1,8 +1,20 @@
 .smallCardContainer{
     background-color: rgb(171, 171, 171, 0.3);
+    color: white;
     width: 60%;
     display: grid;
-    grid-template-columns: 1fr 1fr 50px 30px;
+    grid-template-columns: 1fr 1fr  50px 50px 30px;
 border: 1px solid white;
 margin-top: 10px;
+& .updateBtn{
+    &:hover{
+        color: aqua;
+    }
+}
+& .deleteBtn{
+    &:hover{
+        color: red;
+    }
+
+}
 }

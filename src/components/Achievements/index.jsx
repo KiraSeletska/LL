@@ -1,6 +1,7 @@
 import styles from "./achievements.module.scss";
 import { useSelector } from "react-redux";
 import { getCurrentDateFormatted } from "../../utils/date";
+import { ToastContainer } from 'react-toastify';
 
 export const Achievements = () => {
   const data = useSelector((state) => state.dictionary.dictionary);
@@ -19,6 +20,7 @@ export const Achievements = () => {
 
   return (
     <div className={styles.wrapper}>
+  
       {
         <p>
           Total learned <span>{data.filter(word => word.status).length}</span> words
@@ -32,6 +34,7 @@ export const Achievements = () => {
       <p>
         Added today <span>{countWordsAddedToday}</span> words
       </p>
+      <ToastContainer />
     </div>
   );
 };
