@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { SmallCard } from "../../components/SmallCard";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import styles from './all.module.scss'
 
 export const All = () => {
   
@@ -21,7 +22,7 @@ export const All = () => {
   
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <h3> ALL in {id} </h3>
       {filteredData.map((el, i) => <SmallCard key={i} props={el} />)}
     </div>

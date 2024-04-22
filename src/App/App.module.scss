@@ -1,11 +1,12 @@
 .App{
     display: flex;
+    max-width: 1440px;
+    min-width: 1000px;
+    margin: auto;
+    position: relative;
     & .outlet{
         width: 70%;
         height: 90vh;
         margin-top: 50px;
-       /// display: flex;
-       // align-items: center;
-       // justify-content: center;
     }
 }
